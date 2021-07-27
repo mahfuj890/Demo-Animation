@@ -1,1 +1,207 @@
- 
+html{
+    font-size: 62.5%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+// ========== Responsive BreakPoints ===========
+
+@mixin mediaMaxWidth($rwdWidth) {
+    @media (max-width: $rwdWidth) {
+      @content;
+    }
+  }
+
+  @mixin mediaMinWidth($rwdWidth) {
+    @media (min-width: $rwdWidth) {
+      @content;
+    }
+  }
+
+  @mixin mediaBreakWidth($rwdMin-Width, $rwdMax-Width) {
+    @media (min-width: $rwdMin-Width) and (max-width: $rwdMax-Width) {
+      @content;
+    }
+  }
+
+  @mixin Button-hover-transition() {
+    transition: all 0.5s ease-in-out !important;
+    -webkit-transition: all 0.5s ease-in-out !important;
+    -moz-transition: all 0.5s ease-in-out !important;
+    -ms-transition: all 0.5s ease-in-out !important;
+    -o-transition: all 0.5s ease-in-out !important;
+  }
+
+  %service_itemss_title {
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 3rem;
+    @include mediaMaxWidth(767px) {
+      font-size: 2.2rem;
+    }
+  }
+  %service_itemss_paragraph {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    @include mediaMaxWidth(767px) {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+  %service_title {
+    font-weight: 500;
+    font-size: 4.8rem;
+    line-height: 6.4rem;
+
+    @include mediaBreakWidth(1200px, 1500px) {
+      font-size: 4.2rem;
+    }
+    @include mediaBreakWidth(768px, 1199px) {
+      font-size: 3.8rem;
+    }
+    @include mediaMaxWidth(767px) {
+      font-size: 2.8rem;
+      line-height: 4rem;
+    }
+  }
+
+p{
+    font-size: 1.6rem;
+}
+
+/* ============ Scrollbar Section =========== */
+.c-scrollbar{
+    background-color: rgb(158, 158, 158);
+}
+.c-scrollbar_thumb{
+
+    background: rgb(56, 158, 241);
+
+    opacity: 1;
+    animation: scrollbar_color 2s ease-in-out infinite  ;
+    -webkit-animation: scrollbar_color 2s ease-in-out infinite  ;
+}
+@keyframes scrollbar_color {
+    0%{
+        filter: hue-rotate(0);
+    }
+    50%{
+        filter: hue-rotate(45deg);
+        -webkit-filter: hue-rotate(45deg);
+}
+    100%{
+        filter: hue-rotate(90deg);
+        -webkit-filter: hue-rotate(90deg);
+}
+
+}
+
+/* ============ Service Section =========== */
+.service_wrapper {
+    background-color: whitesmoke;
+    padding: 11rem 0 13rem 0;
+    .col-lg-4 {
+      margin-top: 1rem;
+      /* @include mediaMinWidth(768px) {
+        display: flex;
+        justify-content: center;
+      } */
+    }
+    .service_title {
+      @extend %service_title;
+
+
+      @include mediaMaxWidth(1199px) {
+        padding-bottom: 3rem;
+      }
+    }
+
+    .service_items_area {
+      background-color: white;
+      padding: 3rem 1rem;
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+
+      &::before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        width: 0px;
+        height: 0px;
+        background: rgb(34, 34, 34);
+        border-radius: 50%;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+      }
+      &:hover::before {
+        width: 300%;
+        height: 300%;
+      }
+      &:hover h3,
+      &:hover p {
+        color: white;
+        @include Button-hover-transition();
+      }
+
+      /* @include mediaMinWidth(768px) {
+        width: 90%;
+        padding: 4rem;
+      } */
+    }
+
+    .service_icon {
+      position: relative;
+
+      img {
+        height: 15.3rem;
+        width: 20rem;
+        @include mediaBreakWidth(768px, 1500px) {
+          height: 12.3rem;
+          width: 16rem;
+        }
+
+        @include mediaMaxWidth(767px) {
+          height: 13.3rem;
+          width: 15rem;
+        }
+      }
+
+    }
+    .service_content {
+      position: relative;
+      h3 {
+        @extend %service_itemss_title;
+        margin: 4rem 0 1rem 0;
+        @include mediaMaxWidth(767px) {
+          margin: 2rem 0 0.8rem 0;
+        }
+      }
+      p {
+        @extend %service_itemss_paragraph;
+      }
+    }
+  }
+
+
+  .left_to_right_wrapper{
+      .whats_up{
+        font-size: calc(2rem + 3vw);
+      }
+  }
